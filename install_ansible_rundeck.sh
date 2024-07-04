@@ -5,9 +5,9 @@
 # RUN AS ROOT!
 
 # you might wan to change this
-# sets all passwords of users and the vscode server to "onemarcfifty"
+# sets all passwords of users and the vscode server to "livelink"
 
-USERPASSWORD=onemarcfifty
+USERPASSWORD=livelink
 
 
 # first we install some software
@@ -47,7 +47,8 @@ apt install -y mariadb-server
 # create rundeck db
 mysql -u root -e 'create database rundeck'
 # create user, random pass and grant access
-RANDOMPASSWORD=`date +%s | sha256sum | base64 | head -c 32`
+#RANDOMPASSWORD=`date +%s | sha256sum | base64 | head -c 32`
+RANDOMPASSWORD=livelink
 mysql -u root -e "create user rundeck@localhost identified by '$RANDOMPASSWORD'"
 mysql -u root -e 'grant ALL on rundeck.* to rundeck@localhost'
 
